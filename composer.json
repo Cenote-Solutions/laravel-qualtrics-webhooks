@@ -1,0 +1,30 @@
+{
+    "name": "cenotesolutions/laravel-qualtrics-webhooks",
+    "type": "library",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Dev",
+            "email": "leaddevt@cenotesolutions.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "illuminate/http": "^5.7",
+        "illuminate/routing": "^5.7",
+        "illuminate/support": "^5.7",   
+        "symfony/http-kernel": "^4.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "CenoteSolutions\\LaravelQualtricsWebhooks\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CenoteSolutions\\LaravelQualtricsWebhooks\\WebhooksServiceProvider"
+            ]
+        }
+    }
+}
