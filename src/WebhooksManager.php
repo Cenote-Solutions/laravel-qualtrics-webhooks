@@ -60,34 +60,12 @@ class WebhooksManager
     /**
      * Get the publication URL for the given event name.
      * 
-     * @param string $event
      * @param array $parameters
      * @return string
      */
-    public function publicationUrl($event, array $parameters = [])
+    public function publicationUrl(array $parameters = [])
     {
         return $this->url->route('qualtrics-webhooks.listen', $parameters);
-    }
-
-    /**
-     * Get an array of payload for creating event subscriptions for the specified events.
-     * 
-     * @param array $events
-     * @return array
-     */
-    public function getEventSubscriptionCreatePayloadList(array $events)
-    {
-        return collect(
-            Arr::only($this->config['events'], $events)
-        )->mapWithKeys(function ($event) {
-            return [
-                'publicationUrl' => $this->publicationUrl($event),
-                'topics' => $event,
-                'event' => $this->
-            ];
-
-            return [$event => $payload];
-        })->all();
     }
 
     /**

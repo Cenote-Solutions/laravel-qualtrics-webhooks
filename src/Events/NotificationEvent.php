@@ -34,4 +34,9 @@ class NotificationEvent
         $this->data = $data;
         $this->request = $request;
     }
+
+    public function getData($key, $default = null)
+    {
+        return data_get($this->data, $key, $default);
+    }
 }
