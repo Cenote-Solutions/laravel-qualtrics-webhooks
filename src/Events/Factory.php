@@ -34,12 +34,6 @@ class Factory
         return $this->get($event) !== null;
     }
 
-    /**
-     * Get the details/configuration for the event.
-     * 
-     * @param string $event
-     * @return array|null
-     */
     public function get($event)
     {
         return $this->events->first(function ($config) use ($event) {

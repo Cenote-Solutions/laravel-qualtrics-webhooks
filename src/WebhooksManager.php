@@ -3,11 +3,9 @@
 namespace CenoteSolutions\LaravelQualtricsWebhooks;
 
 use CenoteSolutions\LaravelQualtricsWebhooks\Events\Factory as EventFactory;
-use InvalidArgumentException;
 use Illuminate\Http\Request;
 use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
 use Psr\Log\LoggerInterface;
 
 class WebhooksManager
@@ -146,6 +144,6 @@ class WebhooksManager
      */
     protected function formatRequestLog(Request $request)
     {
-        return $request->fullUrlWithQuery();
+        return $request->fullUrl();
     }
 }

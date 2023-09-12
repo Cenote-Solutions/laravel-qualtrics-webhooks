@@ -32,23 +32,23 @@ return [
     'events' => [
         [
             'event' => 'controlpanel.activateSurvey',
-            'class' => CenoteSolutions\LaravelQualtricsWebhooks\Events\Survey\Activate::class
+            'class' => \CenoteSolutions\LaravelQualtricsWebhooks\Events\Survey\Activate::class
         ],
         [
             'event' => 'controlpanel.deactivateSurvey',
-            'class' => CenoteSolutions\LaravelQualtricsWebhooks\Events\Survey\Deactivate::class
+            'class' => \CenoteSolutions\LaravelQualtricsWebhooks\Events\Survey\Deactivate::class
         ],            
         [
             'event' => 'surveyengine.startedRecipientSession',
-            'class' => CenoteSolutions\LaravelQualtricsWebhooks\Events\Survey\StartedRecipientSession::class
+            'class' => \CenoteSolutions\LaravelQualtricsWebhooks\Events\Survey\StartedRecipientSession::class
         ],
         [
             'event' => 'surveyengine.partialResponse',
-            'class' => CenoteSolutions\LaravelQualtricsWebhooks\Events\Survey\PartialResponse::class
+            'class' => \CenoteSolutions\LaravelQualtricsWebhooks\Events\Survey\PartialResponse::class
         ],
         [
             'event' => 'surveyengine.completedResponse',
-            'class' => CenoteSolutions\LaravelQualtricsWebhooks\Events\Survey\CompletedResponse::class
+            'class' => \CenoteSolutions\LaravelQualtricsWebhooks\Events\Survey\CompletedResponse::class
         ],
         [
             'event' => '*',

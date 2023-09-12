@@ -8,5 +8,5 @@ Route::prefix($webhooks->getConfig('prefix'))
 
         $controller = $webhooks->getConfig('controller');
 
-        Route::match(['get','post'], 'listen', "$controller@listen")->name('listen');
+        Route::match(['get', 'post'], 'listen', "$controller@listen")->name('listen');
     });
