@@ -18,6 +18,14 @@ class Factory
 
     public function make($event, $data, Request $request)
     {
+        // Strip the brand id from the event name, if any.
+        if (
+            ($brandId = data_get($data, 'BrandID'))
+            && Str::startsWith($event, "$brandId.")
+        ) {
+            $event = Str::replaceFirst("$brandId.", '', $event);
+        }
+
         $config = $this->get($event);
 
         if (! $config) {
@@ -46,7 +54,7 @@ class Factory
         return (
             $pattern === '*'
             || $event === $pattern 
-            || Str::startsWith($event, "$pattern.")
+            || Str::startsWith($event, [$pattern, "$pattern."])
         );
     }
 }

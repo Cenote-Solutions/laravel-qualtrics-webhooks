@@ -90,7 +90,9 @@ trait NotificationControllerTrait
             $message = $this->verifyEncrypted($request, $sharedKey);
         } elseif ($sharedKey) {
             $message = $this->verifyHashed($request, $sharedKey);
-        } elseif (! ($message = $this->getMessageRaw($request))) {
+        } elseif ($data = $request->input()) {
+            return json_decode(json_encode($data));
+        } else {
             $this->unverified();
         }
 
@@ -118,7 +120,7 @@ trait NotificationControllerTrait
      */
     protected function makeEventObject($event, $data, Request $request)
     {
-        $class = $this->webhooks()->events()->get($event)['class'];
+        $class = $this->webhooks()->events()->make($event, $data, $request);
 
         return new $class($event, $data, $request);
     }
