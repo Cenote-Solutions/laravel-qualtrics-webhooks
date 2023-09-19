@@ -57,12 +57,12 @@ trait NotificationControllerTrait
         );
 
         if (method_exists($this, $method)) {
-            return $this->{$method}($request, $eventObject) ?? $this->accepted();
+            $response = $this->{$method}($request, $eventObject);
+        } else {
+            event($eventObject);
         }
 
-        event($eventObject);
-
-        return $this->accepted();
+        return $response ?? $this->accepted();
     }
     
     /**
