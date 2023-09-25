@@ -37,4 +37,19 @@ trait WithSurveySession
     {
         return Date::toCarbon($this->getStartDate());
     }
+    
+    public function isTest()
+    {
+        return $this->isTruthy($this->getData('IsTest'));
+    }
+
+    public function isPreview()
+    {
+        return $this->isTruthy($this->getData('IsPreview'));
+    }
+
+    protected function isTruthy($value)
+    {
+        return in_array($value, ['true', true, 1, '1'], true);
+    }
 }

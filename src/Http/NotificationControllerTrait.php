@@ -96,7 +96,17 @@ trait NotificationControllerTrait
             $this->unverified();
         }
 
-        return json_decode($message);
+        return json_decode($message, $this->shouldDecodeMessageAsAssociative());
+    }
+
+    /**
+     * Determine whether the decoded message should be an associative array or not.
+     * 
+     * @return bool
+     */
+    protected function shouldDecodeMessageAsAssociative()
+    {
+        return (bool) $this->webhooks()->getConfig('message_associative');
     }
 
     /**

@@ -23,6 +23,11 @@ return [
     'shared_key' => env('QUALTRICS_WEBHOOKS_SHARED_KEY', null),
 
     /**
+     * Whether the JSON decoded message should be an associative array or not.
+     */
+    'message_associative' => env('QUALTRICS_WEBHOOKS_MESSAGE_ASSOCIATIVE', true),
+
+    /**
      * Events that we are listening to.
      * Each entry must contain the following keys:
      *    event: The name of event in Qualtrics

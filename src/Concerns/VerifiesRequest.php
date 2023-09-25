@@ -16,19 +16,20 @@ trait VerifiesRequest
      */
     protected function verifyEncrypted(Request $request, $sharedKey)
     {
-        // Message is Base64 encoded for encrypted webhook event subscriptions.
-        $this->verifyHashed($request, $sharedKey, 
-            $message = base64_decode($this->getMessageRaw($request))    
-        );
+        $message = $this->getMessageRaw($request);
+
+        $this->verifyHashed($request, $sharedKey, $message);
 
         // The method encryption algorithm to use depends on the lenght of the shared key
         $method = strlen($sharedKey) === 16 ? 'AES128' : 'AES256';
 
-        if (! openssl_decrypt($message, $method, $sharedKey)) {
+        $decrypted = openssl_decrypt(base64_decode($message), $method, $sharedKey, OPENSSL_RAW_DATA);
+
+        if ($decrypted === false) {
             $this->unverified();
         }
 
-        return $message;
+        return $decrypted;
     }
 
     /**
@@ -44,7 +45,7 @@ trait VerifiesRequest
         if (! $request->filled('HMAC')) {
             $this->unverified();
         }
-        
+
         $message = $message ?? $this->getMessageRaw($request);
         $validHash = hash_hmac('sha512', $message, $sharedKey, false);
         
