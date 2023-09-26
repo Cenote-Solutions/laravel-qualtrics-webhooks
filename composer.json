@@ -1,7 +1,8 @@
 {
     "name": "cenotesolutions/laravel-qualtrics-webhooks",
+    "description": "Laravel package to listen to Qualtrics webhook events",
     "type": "library",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "authors": [
         {
             "name": "Dev",
